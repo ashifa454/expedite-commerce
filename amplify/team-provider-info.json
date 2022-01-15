@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-expditecommerce-dev-10721-authRole",
+      "UnauthRoleArn": "arn:aws:iam::409410301834:role/amplify-expditecommerce-dev-10721-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::409410301834:role/amplify-expditecommerce-dev-10721-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-expditecommerce-dev-10721-deployment",
+      "UnauthRoleName": "amplify-expditecommerce-dev-10721-unauthRole",
+      "StackName": "amplify-expditecommerce-dev-10721",
+      "StackId": "arn:aws:cloudformation:ap-south-1:409410301834:stack/amplify-expditecommerce-dev-10721/912737d0-763a-11ec-8fd2-0add957f0e7a",
+      "AmplifyAppId": "d3uj9zez5im3vu"
+    }
+  }
+}
