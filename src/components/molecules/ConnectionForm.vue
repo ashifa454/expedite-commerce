@@ -2,11 +2,11 @@
     <div class="form_container">
         <div class="row">
             <div class="col">
-            <Dropdown label="Competitor" title="Choose Competitor" />
+                <Dropdown label="Competitor" title="Choose Competitor" />
             </div>
-                        <div class="col">
-            <Dropdown label="Opportunity" title="Choose Opportunity" />
-                        </div>
+            <div class="col">
+                <Dropdown label="Opportunity" title="Choose Opportunity" />
+            </div>
         </div>
         <div class="row input_wrapper">
             <div class="col">

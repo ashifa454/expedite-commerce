@@ -3,7 +3,7 @@
         <div v-if="label" class="label">
             <Text :msg=label />
         </div>
-        <input :placeholder=placeholder />
+        <input v-bind:value="value" v-bind:class="{hasError:error}" :placeholder=placeholder @input="$emit('input', $event.target.value)" />
     </div>
 </template>
 <script>
@@ -15,7 +15,9 @@ export default {
     },
     props:{
         label: String,
-        placeholder: String
+        placeholder: String,
+        error: Boolean,
+        value: String
     }
 }
 </script>
@@ -29,6 +31,9 @@ input {
     text-decoration: none solid rgb(255, 255, 255);
     font-size: 13px;
     background-color: #404040;
+}
+.hasError {
+        border: 1px solid red;
 }
 .label{
     padding-bottom: 4px;

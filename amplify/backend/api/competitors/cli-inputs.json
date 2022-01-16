@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "competitors",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/asifansar/projects/expdite-commerce/amplify/backend/api/competitors/schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 7,
+      "apiKeyExpirationDate": "2022-01-23T13:43:45.656Z",
+      "keyDescription": ""
+    }
+  }
+}

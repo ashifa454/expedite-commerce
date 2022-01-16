@@ -1,12 +1,14 @@
 <template>
-    <button>{{title}}</button>
+    <button :type=type @click="onclick">{{title}}</button>
 </template>
 
 <script>
 export default {
     name: 'AppButton',
     props: {
-        title: String
+        title: String,
+        onclick: Function,
+        type: String
     }
 }
 </script>
@@ -23,5 +25,9 @@ button {
     padding: 12px 56px;
     border: none;
     cursor: pointer;
+    transition: 0.3s;
+}
+button:hover {
+    background-color: #1c8d0a;
 }
 </style>

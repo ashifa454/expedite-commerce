@@ -1,11 +1,13 @@
 <template>
-    <div class="formContainer">
-        <Text :msg=label />
-        <div class="input_wrapper">
-            <AppInput />
+    <form @submit="submitFormHandler">
+        <div class="formContainer">
+            <Text :msg=label />
+                <div class="input_wrapper">
+                    <AppInput v-model="value" :error="errors.length>0" />
+                </div>
+                <AppButton type="submit" :title=actionTitle />
         </div>
-        <AppButton :title=actionTitle />
-    </div>
+    </form>
 </template>
 <script>
 import Text from '../atoms/Text.vue';
@@ -15,12 +17,41 @@ export default {
     name: 'CardForm',
     props: {
         label: String,
-        actionTitle: String
+        actionTitle: String,
+        action: Function,
+        name: String
+    },
+    data() {
+        return {
+            errors:[],
+            value: null
+        }
     },
     components:{
         Text,
         AppButton,
         AppInput
+    },
+    watch:{
+        'value': function(){
+            console.log("HERE IS VALUE", this.value);
+        }
+    },
+    methods: {
+        validateForm: function() {
+            this.errors=[];
+            if(!this.value){
+                this.errors.push(`${this.name} is Required`);
+            }
+            return this.errors?.length <1;
+        },
+        submitFormHandler: function(e) {
+            e.preventDefault();
+            console.log("HERE IS VALUE", this.value);
+            if(this.validateForm()){
+                this.action();
+            }
+        }
     }
 }
 </script>
