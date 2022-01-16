@@ -13,7 +13,6 @@
 import CardHeader from '../molecules/CardHeader.vue';
 import Chip from '../molecules/Chip.vue';
 import CardForm from '../molecules/CardForm.vue';
-// import { createCompetitors } from '../../graphql/mutations';
 // import { onCreateCompetitors } from '../../graphql/subscriptions';
 export default {
         name: 'CompetitorCard',
@@ -31,8 +30,8 @@ export default {
             this.$store.dispatch("getCompetitors");
         },
         methods: {
-            addCompetitorHandler() {
-                console.log("I WAS CLICKED");
+            addCompetitorHandler(competitor) {
+                this.$store.dispatch('setCompetitor', competitor)
             }
         }
 }

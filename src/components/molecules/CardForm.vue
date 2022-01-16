@@ -3,7 +3,7 @@
         <div class="formContainer">
             <Text :msg=label />
                 <div class="input_wrapper">
-                    <AppInput v-model="value" :error="errors.length>0" />
+                    <AppInput v-model:value="value" :error="errors.length>0" />
                 </div>
                 <AppButton type="submit" :title=actionTitle />
         </div>
@@ -34,7 +34,7 @@ export default {
     },
     watch:{
         'value': function(){
-            console.log("HERE IS VALUE", this.value);
+            this.validateForm();
         }
     },
     methods: {
@@ -45,11 +45,15 @@ export default {
             }
             return this.errors?.length <1;
         },
+        resetForm: function(){
+            this.errors=[];
+            this.value = null;
+        },
         submitFormHandler: function(e) {
             e.preventDefault();
-            console.log("HERE IS VALUE", this.value);
             if(this.validateForm()){
-                this.action();
+                this.action(this.value);
+                this.resetForm();
             }
         }
     }

@@ -3,7 +3,7 @@
         <div v-if="label" class="label">
             <Text :msg=label />
         </div>
-        <input v-bind:value="value" v-bind:class="{hasError:error}" :placeholder=placeholder @input="$emit('input', $event.target.value)" />
+        <input :value="value" v-bind:class="{hasError:error}" :placeholder=placeholder @input="$emit('update:value',$event.target.value)" />
     </div>
 </template>
 <script>
