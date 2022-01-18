@@ -37,8 +37,11 @@ export default {
 </script>
 <style scoped>
     .chip_container{
-        display: flex;
+        display: grid;
         padding: 16px;
+        grid-template-columns: repeat(3, auto);
+        grid-row-gap: 10px;
+        grid-column-gap: 10px;
         border: 1px solid #404040;
         border-bottom-right-radius: 3px;
         border-bottom-left-radius: 3px;
