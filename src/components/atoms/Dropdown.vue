@@ -3,20 +3,9 @@
      <div class="label">
             <Text :msg=label />
     </div>
-    <select>
+    <select v-bind:class="{hasError:error}" @change="$emit('update:value',$event.target.value)">
     <option value="" disabled selected>{{title}}</option>
-    <option value="1">Audi</option>
-    <option value="2">BMW</option>
-    <option value="3">Citroen</option>
-    <option value="4">Ford</option>
-    <option value="5">Honda</option>
-    <option value="6">Jaguar</option>
-    <option value="7">Land Rover</option>
-    <option value="8">Mercedes</option>
-    <option value="9">Mini</option>
-    <option value="10">Nissan</option>
-    <option value="11">Toyota</option>
-    <option value="12">Volvo</option>
+    <option v-for="item in options" v-bind:key="item" :value="item.id">{{item.name}}</option>
   </select>
 </div>
 </template>
@@ -29,7 +18,9 @@ export default {
     },
     props: {
         label: String,
-        title: String
+        title: String,
+         error: Boolean,
+        options: Array
     }
 }
 </script>
@@ -46,6 +37,9 @@ select{
     text-decoration: none solid rgb(255, 255, 255);
     font-size: 13px;
     background-color: #404040;
+}
+.hasError {
+        border: 1px solid red;
 }
  input:focus, textarea:focus, select:focus{
         outline: none;

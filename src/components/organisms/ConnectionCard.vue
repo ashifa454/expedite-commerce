@@ -3,10 +3,10 @@
         <CardHeader text="CONNECTION" />
     </div>
     <div class="form_container">
-        <ConnectionForm />
+        <ConnectionForm :opportunities=oportunities :competitors=competitors :action="addConnection" />
     </div>
-    <div class="connection_container">
-        <Connection from="Apple" to="Tesla" challenge="TEST" strategy="TEST" />
+    <div v-if="connections?.length>0" class="connection_container">
+        <Connection v-for="item in connections" v-bind:key="item" :from="item?.competitor?.name" :to="item?.opportunity?.name" :challenge="item?.challenge" :strategy="item?.strategy" />
     </div>
 </template>
 <script>
@@ -15,6 +15,25 @@ import ConnectionForm from '../molecules/ConnectionForm.vue';
 import Connection from '../molecules/Connection.vue';
 export default {
         name: 'ConnectionCard',
+        computed: {
+            competitors() {
+                return this.$store.getters.getCompetitors
+            },
+             oportunities() {
+                return this.$store.getters.getOpportunities
+            },
+            connections() {
+                return this.$store.getters.getConnections
+            }
+        },
+        methods: { 
+            addConnection(connection){
+                this.$store.dispatch('addConnection', connection)
+            }
+        },
+        mounted() {
+            this.$store.dispatch("listConnections");
+        },
         components:{
             CardHeader,
             ConnectionForm,
@@ -24,10 +43,6 @@ export default {
 </script>
 <style scoped>
     .connection_container{
-        padding: 16px;
-        border: 1px solid #404040;
-        border-bottom-right-radius: 3px;
-        border-bottom-left-radius: 3px;
         background-color: #404040;
     }
 </style>

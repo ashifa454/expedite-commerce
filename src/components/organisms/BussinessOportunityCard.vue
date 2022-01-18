@@ -3,12 +3,10 @@
         <CardHeader text="BUSINESS OPPORTUNITY" />
     </div>
     <div class="form_container">
-        <CardForm label="Opportunity name" actionTitle="Add" />
+        <CardForm label="Opportunity name" actionTitle="Add" :action="addOpportunityHandler" />
     </div>
-    <div class="chip_container">
-        <Chip text="Apple" />
-        <Chip text="Apple" />
-        <Chip text="Apple" />
+    <div v-if="oportunity?.length>0" class="chip_container">
+        <Chip v-for="item in oportunity" v-bind:key="item" :text="item?.name" />
     </div>
 </template>
 <script>
@@ -21,6 +19,19 @@ export default {
             CardHeader,
             Chip,
             CardForm
+        },
+        computed: {
+            oportunity() {
+                return this.$store.getters.getOpportunities
+            }
+        },
+        mounted() {
+            this.$store.dispatch("getOpportunity");
+        },
+        methods: {
+            addOpportunityHandler(oportunity) {
+                this.$store.dispatch('addOportunity', oportunity)
+            }
         }
 }
 </script>

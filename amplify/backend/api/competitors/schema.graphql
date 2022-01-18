@@ -8,3 +8,16 @@ type Competitors @model @auth( rules: [
   id: ID!
   name: String!
 }
+type Opportunities @model @auth( rules: [ {allow:public, operations:[create, read], provider: apiKey} ]) {
+  id: ID!
+  name: String!
+}
+type Connections @model @auth(rules:[{allow:public, operations:[create,read], provider:apiKey}]){
+  id: ID!
+  c_id: ID
+  o_id: ID
+  competitor: Competitors @hasOne(fields:["c_id"])
+  opportunity: Opportunities @hasOne(fields: ["o_id"])
+  challenge: String!,
+  strategy: String!
+}

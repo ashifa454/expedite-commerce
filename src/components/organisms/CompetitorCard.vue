@@ -5,7 +5,7 @@
     <div class="form_container">
         <CardForm label="Competitor name" actionTitle="Add" :action="addCompetitorHandler" />
     </div>
-    <div class="chip_container">
+    <div v-if="competitors?.length>0" class="chip_container">
         <Chip v-for="item in competitors" v-bind:key="item" :text="item?.name" />
     </div>
 </template>
@@ -13,7 +13,6 @@
 import CardHeader from '../molecules/CardHeader.vue';
 import Chip from '../molecules/Chip.vue';
 import CardForm from '../molecules/CardForm.vue';
-// import { onCreateCompetitors } from '../../graphql/subscriptions';
 export default {
         name: 'CompetitorCard',
         components:{
