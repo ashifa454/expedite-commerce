@@ -32,9 +32,10 @@ export default {
         AppButton,
         AppInput
     },
-    watch:{
-        'value': function(){
-            this.validateForm();
+    watch: {
+        'value': function() {
+            if(this.value?.length>0)
+                this.errors={};
         }
     },
     methods: {

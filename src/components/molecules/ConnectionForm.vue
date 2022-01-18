@@ -50,17 +50,21 @@ export default {
         }
     },
      watch:{
-        [CONNECTION_FORM_FIELDS.stratergy]: function(){
-            this.validateForm(CONNECTION_FORM_FIELDS.stratergy);
+        [CONNECTION_FORM_FIELDS.stratergy]: function() {
+            if(this[CONNECTION_FORM_FIELDS.stratergy]?.length>0)
+                this.errors = {};
         },
-        [CONNECTION_FORM_FIELDS.challenge]: function(){
-            this.validateForm(CONNECTION_FORM_FIELDS.challenge);
+        [CONNECTION_FORM_FIELDS.challenge]: function() {
+            if(this[CONNECTION_FORM_FIELDS.challenge]?.length>0)
+                this.errors = {};
         },
-        [CONNECTION_FORM_FIELDS.competitor]: function(){
-            this.validateForm(CONNECTION_FORM_FIELDS.competitor);
+        [CONNECTION_FORM_FIELDS.competitor]: function() {
+            if(this[CONNECTION_FORM_FIELDS.competitor]?.length>0)
+                this.errors = {};
         },
-        [CONNECTION_FORM_FIELDS.opportunity]: function(){
-            this.validateForm(CONNECTION_FORM_FIELDS.opportunity);
+        [CONNECTION_FORM_FIELDS.opportunity]: function() {
+            if(this[CONNECTION_FORM_FIELDS.opportunity]?.length>0)
+                this.errors = {};
         }
     },
     methods: {

@@ -5,7 +5,7 @@
     </div>
     <select v-bind:class="{hasError:error}" @change="$emit('update:value',$event.target.value)">
     <option value="" disabled selected>{{title}}</option>
-    <option v-for="item in options" v-bind:key="item" :value="item.id">{{item.name}}</option>
+    <option v-for="item in options" :selected="item.id==value" v-bind:key="item" :value="item.id">{{item.name}}</option>
   </select>
 </div>
 </template>
@@ -20,6 +20,7 @@ export default {
         label: String,
         title: String,
         error: Boolean,
+        value: String,
         options: Array
     }
 }
