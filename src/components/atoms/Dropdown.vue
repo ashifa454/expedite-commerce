@@ -19,7 +19,7 @@ export default {
     props: {
         label: String,
         title: String,
-         error: Boolean,
+        error: Boolean,
         options: Array
     }
 }

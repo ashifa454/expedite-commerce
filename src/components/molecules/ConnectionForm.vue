@@ -51,30 +51,44 @@ export default {
     },
      watch:{
         [CONNECTION_FORM_FIELDS.stratergy]: function(){
-            console.log("HERE IS VALUE", CONNECTION_FORM_FIELDS.stratergy);
+            this.validateForm(CONNECTION_FORM_FIELDS.stratergy);
         },
         [CONNECTION_FORM_FIELDS.challenge]: function(){
-            console.log("HERE IS VALUE", CONNECTION_FORM_FIELDS.challenge);
+            this.validateForm(CONNECTION_FORM_FIELDS.challenge);
         },
         [CONNECTION_FORM_FIELDS.competitor]: function(){
-            console.log("HERE IS VALUE", this[CONNECTION_FORM_FIELDS.competitor]);
+            this.validateForm(CONNECTION_FORM_FIELDS.competitor);
         },
         [CONNECTION_FORM_FIELDS.opportunity]: function(){
-            console.log("HERE IS VALUE", CONNECTION_FORM_FIELDS.opportunity);
+            this.validateForm(CONNECTION_FORM_FIELDS.opportunity);
         }
     },
     methods: {
-         validateForm: function() {
-            this.errors={};
-            Object.keys(CONNECTION_FORM_FIELDS).forEach((item)=>{
+         validateForm: function(target) {
+            if(target) {
+                if(Object.keys(this.errors)?.length<1)
+                    this.errors = {};
+                    
+                if(!this[target]) {
+                    if(!this.errors[target])
+                        this.errors[target] = [];
+                    this.errors[target].push(`${CONNECTION_FORM_FIELDS[target]} is Required`);
+                } else {
+                        this.errors[target] = [];
+                }
+                return this.errors[target]?.length<1;
+            } else {
+              this.errors = {};
+              Object.keys(CONNECTION_FORM_FIELDS).forEach((item)=>{
                 if(!this[item]) {
                     if(!this.errors[item])
                     this.errors[item] = [];
 
                     this.errors[item].push(`${CONNECTION_FORM_FIELDS[item]} is Required`);
-                }
-            })
-            return this.errors?.length <1;
+                    }
+                })
+                return Object.keys(this.errors)?.length <1;
+            }
         },
         resetForm: function(){
             this.errors={};
